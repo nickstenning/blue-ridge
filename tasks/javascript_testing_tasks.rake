@@ -3,7 +3,7 @@ rhino_command = "java -Dblue.ridge.prefix=\"#{plugin_prefix}\" -jar #{plugin_pre
 test_runner_command = "#{rhino_command} #{plugin_prefix}/lib/test_runner.js"
 
 def find_base_dir
-  target_dirs = ["test/javascript", "spec/javascripts", "examples/javascripts"]
+  target_dirs = ENV["BLUE_RIDGE_TESTS"] || ["test/javascript", "spec/javascripts", "examples/javascripts"]
   base_dir = target_dirs.find {|d| File.exist?(d) }
   raise "Could not find JavaScript test directory.\nNone of the following directories existed: #{target_dirs.join(", ")}.\nMaybe you need to call './script/generate blue_ridge'?" unless base_dir
   base_dir
