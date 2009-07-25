@@ -43,6 +43,7 @@ end
 
 
 namespace :js do
+  desc "Open fixtures directory"
   task :fixtures do
     fixture_dir = "#{RAILS_ROOT}/#{find_base_dir}/fixtures"
     
@@ -55,6 +56,7 @@ namespace :js do
     end
   end
   
+  desc "Run Rhino JS shell"
   task :shell do
     rlwrap = `which rlwrap`.chomp
     system("#{rlwrap} #{rhino_command} -f #{plugin_prefix}/lib/shell.js -f -")
